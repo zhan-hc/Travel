@@ -30,7 +30,6 @@ export default {
   },
   watch: {
     list (newValue, oldValue) {
-      console.log(newValue)
       this._recommedinit()
     }
   },
