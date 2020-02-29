@@ -28,25 +28,28 @@ export default {
     return {
     }
   },
-  mounted () {
-    this._recommedinit()
+  watch: {
+    list (newValue, oldValue) {
+      console.log(newValue)
+      this._recommedinit()
+    }
   },
   methods: {
     _recommedinit () {
       let recWidth = 100 // 图片宽度
       let margin = 5
-      let width = (recWidth + margin) * this.recList.length - margin
+      let width = (recWidth + margin) * this.list.length - margin
       this.$refs.recommend.style.width = width + 'px' // 给ul设置了宽度
-      this.$nextTick(() => {
-        if (!this.recScroll) {
-          this.recScroll = new BScroll(this.$refs.recScroll, {
-            scrollX: true, // 水平滚动
-            eventPassthrough: 'vertical' // 水平滚动时忽略垂直滚动
-          })
-        } else {
-          this.recScroll.refresh()
-        }
-      })
+      // this.$nextTick(() => {
+      if (!this.recScroll) {
+        this.recScroll = new BScroll(this.$refs.recScroll, {
+          scrollX: true, // 水平滚动
+          eventPassthrough: 'vertical' // 水平滚动时忽略垂直滚动
+        })
+      } else {
+        this.recScroll.refresh()
+      }
+      // })
     }
   },
   props: {
