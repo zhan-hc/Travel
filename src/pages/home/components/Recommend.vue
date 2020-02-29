@@ -7,7 +7,7 @@
       </div>
       <div class="contentwrapper" ref="recScroll">
         <ul class="content" ref="recommend">
-            <li class="item" v-for="item in recList" :key="item.id">
+            <li class="item" v-for="item in list" :key="item.id">
                 <img class="level" v-show="item.level" :src="item.level">
                 <img class="item-img" :src="item.imgUrl">
                 <div class="item-info">
@@ -26,47 +26,6 @@ export default {
   name: 'HomeRecommend',
   data () {
     return {
-      recList: [
-        {
-          id: '0001',
-          level: 'https://imgs.qunarzz.com/piao/fusion/1710/ab/159673b63e6ca702.png',
-          imgUrl: 'https://imgs.qunarzz.com/sight/p0/2001/a4/a4c44cabe1ef67d9a3.water.jpg_250x250_2c832e7c.jpg',
-          title: '世界之窗',
-          price: '￥0.4'
-        },
-        {
-          id: '0002',
-          level: 'https://imgs.qunarzz.com/piao/fusion/1710/2d/36d0c4adaebbbc02.png',
-          imgUrl: 'https://imgs.qunarzz.com/sight/p0/1508/2e/d9363ce50a88c8c5ff5a138c67687cd4.water.jpg_250x250_b592c33d.jpg',
-          title: '深圳野生动物园',
-          price: '￥1'
-        },
-        {
-          id: '0003',
-          level: 'https://imgs.qunarzz.com/piao/fusion/1710/67/edc47ffef9e96b02.png',
-          imgUrl: 'https://imgs.qunarzz.com/sight/p0/1912/7c/7c46c8ef2938cd2da3.water.jpg_250x250_24bc542a.jpg',
-          title: '东部华侨城大峡谷',
-          price: '￥159.6'
-        },
-        {
-          id: '0004',
-          imgUrl: 'https://imgs.qunarzz.com/sight/p0/1810/df/df65113c1322333fa3.water.jpg_250x250_cde69668.jpg',
-          title: '地王大厦',
-          price: '￥60'
-        },
-        {
-          id: '0005',
-          imgUrl: 'https://imgs.qunarzz.com/sight/p0/1603/96/96f47768e63ffdbe90.water.jpg_250x250_3f822c64.jpg',
-          title: '海上田园',
-          price: '￥37'
-        },
-        {
-          id: '0006',
-          imgUrl: 'https://imgs.qunarzz.com/sight/p0/1902/6e/6e1aa2596b02031aa3.img.png_250x250_f618efae.png',
-          title: '大鹏玫瑰小镇',
-          price: '￥26.9'
-        }
-      ]
     }
   },
   mounted () {
@@ -89,6 +48,9 @@ export default {
         }
       })
     }
+  },
+  props: {
+    list: Array
   }
 }
 </script>

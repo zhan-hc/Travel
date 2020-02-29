@@ -1,7 +1,7 @@
 <template>
     <div class="wrapper">
-    <swiper :options="swiperOption">
-        <swiper-slide v-for="swiper in swiperList" :key="swiper.id">
+    <swiper :options="swiperOption" v-if="showSwiper">
+        <swiper-slide v-for="swiper in list" :key="swiper.id">
             <img class="swiper-img" :src="swiper.imgUrl"/>
         </swiper-slide>
         <div class="swiper-pagination"  slot="pagination"></div>
@@ -17,17 +17,16 @@ export default {
       swiperOption: {
         pagination: '.swiper-pagination',
         loop: true // 支持循环
-      },
-      swiperList: [
-        {
-          id: '0001',
-          imgUrl: 'http://img.zcool.cn/community/01c93b56d7cbc032f875520fde1dfd.jpg@1280w_1l_2o_100sh.jpg'
-        },
-        {
-          id: '0002',
-          imgUrl: 'http://img0.imgtn.bdimg.com/it/u=445893612,3717936684&fm=26&gp=0.jpg'
-        }]
+      }
     }
+  },
+  computed: {
+    showSwiper () {
+      return this.list.length
+    }
+  },
+  props: {
+    list: Array
   }
 }
 </script>
