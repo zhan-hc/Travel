@@ -7,14 +7,14 @@
       </div>
       <div class="contentwrapper" ref="recScroll">
         <ul class="content" ref="recommend">
-            <li class="item" v-for="item in list" :key="item.id">
+            <router-link tag="li" class="item" v-for="item in list" :key="item.id" :to="'/detail/' + item.id">
                 <img class="level" v-show="item.level" :src="item.level">
                 <img class="item-img" :src="item.imgUrl">
                 <div class="item-info">
                     <p class="title">{{item.title}}</p>
                     <p class="price"><span>{{item.price}}</span>起</p>
                 </div>
-            </li>
+            </router-link>
         </ul>
       </div>
   </div>

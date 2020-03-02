@@ -5,18 +5,20 @@
         <span class="title">猜你喜欢</span>
       </div>
       <ul class="contentwrapper">
-          <li class="item border-bottom" v-for="item in list" :key="item.id">
+          <router-link tag="li" class="item border-bottom" v-for="item in list" :key="item.id" :to="'/detail/' + item.id">
                 <img class="item-img" :src="item.imgUrl">
               <div class="info">
                   <p class="title">{{item.title}}</p>
-                  <p class="assess">⭐⭐⭐⭐⭐{{item.seller}}条评论</p>
+                  <p class="assess">
+                    <span class="iconfont icon-xing" v-for="i in 5" :key="i"></span>
+                    {{item.seller}}条评论</p>
                   <div class="basic">
                     <div class="price"><span>{{item.price}}</span>起</div>
                     <div class="address">{{item.address}}</div>
                   </div>
                   <div class="desc" v-show="item.desc"><span>{{item.desc}}</span></div>
               </div>
-          </li>
+          </router-link>
       </ul>
   </div>
 </template>
@@ -55,6 +57,7 @@ export default {
             display flex
             height 1.9rem
             .item-img
+                flex 0 0 1.7rem
                 width 1.7rem
                 height 1.7rem
                 padding .1rem
@@ -67,6 +70,9 @@ export default {
                 .assess
                     line-height .4rem
                     font-size .24rem
+                    .icon-xing
+                      color #ffa500
+                      font-size .24rem
                 .basic
                     .price
                         display inline
@@ -84,7 +90,7 @@ export default {
                         ellipsis()
                 .desc
                     display: inline-block
-                    // margin-top: .48rem
+                    bottom 0
                     margin-right: .24rem
                     background: #fff9f9
                     padding: .04rem .1rem
