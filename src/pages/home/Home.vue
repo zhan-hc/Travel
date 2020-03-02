@@ -13,6 +13,7 @@
 
 <script type="text/javascript">
 import axios from 'axios'
+import { mapState } from 'vuex'
 import HomeHeader from './components/Header'
 import HomeSwiper from './components/Swiper'
 import HomeIcons from './components/Icons'
@@ -24,7 +25,7 @@ export default {
   name: 'Home',
   data () {
     return {
-      // city: '',
+      lastCity: '',
       swiperList: [],
       iconList: [],
       recList: [],
@@ -33,11 +34,18 @@ export default {
     }
   },
   mounted () {
+    this.lastCity = this.city
     this.getHomeInfo()
+  },
+  activated () { // 当页面被重新加载时执行的生命周期
+    if (this.lastCity !== this.city) {
+      this.lastCity = this.city
+      this.getHomeInfo()
+    }
   },
   methods: {
     getHomeInfo () {
-      axios.get('/api/index.json').then(this.getHomeInfoSucc)
+      axios.get('/api/index.json?city=' + this.city).then(this.getHomeInfoSucc)
     },
     getHomeInfoSucc (res) {
       res = res.data
@@ -51,6 +59,9 @@ export default {
         this.weekList = data.weekList
       }
     }
+  },
+  computed: {
+    ...mapState(['city'])
   },
   components: {
     HomeHeader,
