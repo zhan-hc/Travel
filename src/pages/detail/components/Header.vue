@@ -24,7 +24,10 @@ export default {
     }
   },
   activated () {
-    window.addEventListener('scroll', this.handleScroll)
+    window.addEventListener('scroll', this.handleScroll) // 页面展示时绑定scroll事件
+  },
+  deactivated () {
+    window.removeEventListener('scroll', this.handleScroll) // 页面消失时解绑scroll事件
   },
   methods: {
     handleScroll () {
