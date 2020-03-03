@@ -1,12 +1,15 @@
 <template>
   <div class="detail">
       <detail-banner :details='details'></detail-banner>
+      <detail-header></detail-header>
+      <div class="content"></div>
   </div>
 </template>
 
 <script type="text/javascript">
 import axios from 'axios'
-import DetailBanner from './components/banner.vue'
+import DetailBanner from './components/Banner.vue'
+import DetailHeader from './components/Header.vue'
 export default {
   name: 'Detail',
   data () {
@@ -30,10 +33,14 @@ export default {
     }
   },
   components: {
-    DetailBanner
+    DetailBanner,
+    DetailHeader
   }
 }
 </script>
 
 <style lang="stylus" scoped >
+.detail
+  .content
+    height 50rem
 </style>

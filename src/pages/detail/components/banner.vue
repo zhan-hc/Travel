@@ -6,8 +6,9 @@
           <div class="banner-info">
               <div class="title">{{details.sightName}}</div>
               <div class="number">
-                <span class="iconfont banner-icon">&#xe617;</span>
-                6</div>
+                <span class="iconfont icon-tupian"></span>
+                <span class="imgnum">{{ImgNumbeer}}</span>
+              </div>
           </div>
       </div>
       <common-gallary v-show="showGallary" :imgs="details.gallaryImgs" @close="handleBannerClose"></common-gallary>
@@ -29,6 +30,13 @@ export default {
     },
     handleBannerClose () {
       this.showGallary = false
+    }
+  },
+  computed: {
+    ImgNumbeer () {
+      if (this.details.gallaryImgs) {
+        return this.details.gallaryImgs.length
+      }
     }
   },
   components: {
@@ -63,7 +71,7 @@ export default {
                 padding .16rem .2rem
                 font-size .32rem
             .number
-                flex 0 0 .64rem
+                flex 0 0 .54rem
                 height .32rem
                 line-height .32rem
                 margin-top .32rem
@@ -72,6 +80,6 @@ export default {
                 border-radius .2rem
                 font-size .24rem
                 background rgba(0,0,0,0.4)
-                .banner-icon
+                .icon-tupian
                     font-size .24rem
 </style>
