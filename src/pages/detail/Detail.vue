@@ -2,7 +2,7 @@
   <div class="detail">
       <detail-banner :details='details'></detail-banner>
       <detail-header></detail-header>
-      <div class="content"></div>
+      <detail-list :list='details.categoryList'></detail-list>
   </div>
 </template>
 
@@ -10,11 +10,13 @@
 import axios from 'axios'
 import DetailBanner from './components/Banner.vue'
 import DetailHeader from './components/Header.vue'
+import DetailList from './components/List.vue'
 export default {
   name: 'Detail',
   data () {
     return {
-      details: {}
+      details: {},
+      place: {}
     }
   },
   mounted () {
@@ -22,25 +24,29 @@ export default {
   },
   methods: {
     getDetailInfo () {
-      axios.get('/api/detail.json').then(this.getDetailInfoSucc)
+      axios.get('/api/detail.json', {
+        params: {
+          id: this.$router.currentRoute.params.id
+        }
+      }).then(this.getDetailInfoSucc)
     },
     getDetailInfoSucc (res) {
       res = res.data
       if (res.ret && res.data) {
         const data = res.data
-        this.details = data
+        this.place = data.hotPlace
+        this.id = Math.floor(this.$router.currentRoute.params.id) - 1
+        this.details = data.hotPlace[this.id]
       }
     }
   },
   components: {
     DetailBanner,
-    DetailHeader
+    DetailHeader,
+    DetailList
   }
 }
 </script>
 
 <style lang="stylus" scoped >
-.detail
-  .content
-    height 50rem
 </style>

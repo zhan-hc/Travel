@@ -2,16 +2,16 @@
   <div class="banner">
       <div class="banner-img-wrapper" @click="handleBannerClick">
           <img class="banner-img"
-          :src="details.bannerImg">
+          :src="categorylist.bannerImg">
           <div class="banner-info">
-              <div class="title">{{details.sightName}}</div>
+              <div class="title">{{categorylist.sightName}}</div>
               <div class="number">
                 <span class="iconfont icon-tupian"></span>
                 <span class="imgnum">{{ImgNumbeer}}</span>
               </div>
           </div>
       </div>
-      <common-gallary v-show="showGallary" :imgs="details.gallaryImgs" @close="handleBannerClose"></common-gallary>
+      <common-gallary v-show="showGallary" :imgs="categorylist.gallaryImgs" @close="handleBannerClose"></common-gallary>
   </div>
 </template>
 
@@ -21,6 +21,7 @@ export default {
   name: 'DetailBanner',
   data () {
     return {
+      categorylist: {},
       showGallary: false
     }
   },
@@ -32,10 +33,15 @@ export default {
       this.showGallary = false
     }
   },
+  watch: {
+    details () {
+      this.categorylist = this.details
+    }
+  },
   computed: {
     ImgNumbeer () {
-      if (this.details.gallaryImgs) {
-        return this.details.gallaryImgs.length
+      if (this.categorylist.gallaryImgs) {
+        return this.categorylist.gallaryImgs.length
       }
     }
   },

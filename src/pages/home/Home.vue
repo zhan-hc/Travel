@@ -18,7 +18,7 @@ import HomeHeader from './components/Header'
 import HomeSwiper from './components/Swiper'
 import HomeIcons from './components/Icons'
 import HomeRecommend from './components/Recommend'
-import split from '../home/split'
+import split from 'common/split/split.vue'
 import HomeLike from '../home/components/Like'
 import HomeWeekend from '../home/components/Weekend'
 export default {
