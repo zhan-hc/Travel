@@ -50,7 +50,7 @@
           <div class="main">
             <div class="text">{{item.text}}</div>
           </div>
-          <div class="img-wrapper">
+          <div class="img-wrapper" v-show="item.img">
             <div class="list-img" v-for="(imgs, index) in item.img" :key="index">
               <img :src="imgs">
             </div>
@@ -89,7 +89,7 @@ export default {
     }
   },
   methods: {
-    handleDevelop () {
+    handleDevelop () { // 点击展开
       this.showDevelop = false
       let num = this.lists.daytour.length
       this.tour = this.lists.daytour.slice(0, num)
@@ -102,6 +102,7 @@ export default {
 </script>
 
 <style lang="stylus" scoped >
+@import '~styles/mixins.styl'
 .detail-list
     .list-info
             display flex
@@ -238,6 +239,7 @@ export default {
               display inline-block
           .main
             .text
+              // ellipsis-row(5)
               padding-top .2rem
               line-height .44rem
           .img-wrapper

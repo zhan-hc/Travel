@@ -57,7 +57,7 @@ module.exports = {
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/',
+    assetsPublicPath: '/', // 项目打包之后存放的路径(默认在根路径，若要放在其他目录，需修改)
 
     /**
      * Source Maps

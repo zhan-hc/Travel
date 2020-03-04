@@ -15,8 +15,7 @@ export default {
   name: 'Detail',
   data () {
     return {
-      details: {},
-      place: {}
+      details: {}
     }
   },
   mounted () {
@@ -34,7 +33,6 @@ export default {
       res = res.data
       if (res.ret && res.data) {
         const data = res.data
-        this.place = data.hotPlace
         this.id = Math.floor(this.$router.currentRoute.params.id) - 1
         this.details = data.hotPlace[this.id]
       }
@@ -49,4 +47,6 @@ export default {
 </script>
 
 <style lang="stylus" scoped >
+.detail
+  overflow hidden
 </style>
